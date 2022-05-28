@@ -8,8 +8,10 @@ LDFLAGS	:=	-Wl,-x -Wl,--gc-sections
 
 .PHONY:	all clean
 
-all: aout2lda.c
-	$(CC) $(CFLAGS) $(LDFLAGS) -o aout2lda aout2lda.c
+all: aout2lda
 
 clean:
 	rm -f aout2lda
+
+aout2lda: aout2lda.c
+	$(CC) $(CFLAGS) $(LDFLAGS) -o aout2lda aout2lda.c
