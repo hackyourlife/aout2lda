@@ -1,7 +1,8 @@
 pkgname=aout2lda
 pkgver=1.0
 pkgrel=1
-pkgdesc="PDP-11 a.out to absolute loader format converter"
+pkgdesc='PDP-11 a.out to absolute loader format converter'
+url='https://github.com/hackyourlife/aout2lda'
 arch=(x86_64 aarch64 armv7h)
 license=(GPL3)
 source=(aout2lda.c Makefile)
