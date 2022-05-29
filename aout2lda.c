@@ -218,13 +218,13 @@ int main(int argc, char** argv)
 		if(!strcmp(*argv, "--help") || !strcmp(*argv, "-h")) {
 			printf("Usage: %s [options]\n"
 				"\n"
-				"-h, --help          show this help message and exit\n"
-				"--aout AOUT         a.out input file\n"
-				"--lda LDA           LDA output file\n"
-				"--text TEXT         text load address\n"
-				"--data-align ALIGN  data alignment\n"
-				"--vector0           store JMP entry at vector 0\n"
-				"--sym               print symbol table\n",
+				"  -h, --help          show this help message and exit\n"
+				"  --aout AOUT         a.out input file\n"
+				"  --lda LDA           LDA output file\n"
+				"  --text TEXT         text load address\n"
+				"  --data-align ALIGN  data alignment\n"
+				"  --vector0           store JMP entry at vector 0\n"
+				"  --sym               print symbol table\n",
 				self);
 			return 0;
 		} else if(!strcmp(*argv, "--aout")) {
@@ -332,15 +332,17 @@ int main(int argc, char** argv)
 	free(buffer);
 
 	/* data and BSS section */
-	buffer = malloc(U16L(header.data));
-	if(!buffer) {
-		printf("not enough memory\n");
-		return 1;
-	}
+	if(header.data) {
+		buffer = malloc(U16L(header.data));
+		if(!buffer) {
+			printf("not enough memory\n");
+			return 1;
+		}
 
-	fread(buffer, U16L(header.data), 1, in);
-	write_lda_record(out, data_addr, buffer, U16L(header.data));
-	free(buffer);
+		fread(buffer, U16L(header.data), 1, in);
+		write_lda_record(out, data_addr, buffer, U16L(header.data));
+		free(buffer);
+	}
 
 	/* make sure BSS section starts evenly aligned and initialize with zeros */
 	if(header.bss) {

@@ -6,7 +6,7 @@ url='https://github.com/hackyourlife/aout2lda'
 arch=(x86_64 aarch64 armv7h)
 license=(GPL3)
 source=(aout2lda.c Makefile)
-sha256sums=('c566ec61f8141e71f8fa5d04c649188e6314949320e81d07df2b2788546e8770'
+sha256sums=('de192b276745657cf4202e7f957868d176956285937bd7f5ec6b835043eff08a'
             '59507e241a1ad39efa25fdbba677467178b45e83f2f1355ca92f8d011053b32e')
 
 build() {
